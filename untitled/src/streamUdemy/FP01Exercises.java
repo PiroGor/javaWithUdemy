@@ -1,6 +1,8 @@
 package streamUdemy;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FP01Exercises {
     public static void main(String[] args){
@@ -16,6 +18,14 @@ public class FP01Exercises {
         System.out.println(exercisePart4_1(numbers));
         System.out.println(exercisePart4_2(numbers));
         System.out.println(exercisePart4_3(numbers));
+
+        sortExample(courses);
+
+        List<Integer> evenNumbers=exercisePart5_1(numbers);
+        System.out.println(evenNumbers);
+
+        List<Integer> lengthsOfCourses=lengthsOfAllCoursesTitle(courses);
+        System.out.println(lengthsOfCourses);
     }
 
 
@@ -66,5 +76,27 @@ public class FP01Exercises {
         return numbers.stream()                                   //exercise 9
                 .filter(x->x%2!=0)
                 .reduce(0,Integer::sum);
+    }
+
+    private static void sortExample(List<String> courses){
+        courses.stream()
+                .sorted(Comparator.reverseOrder())
+                .forEach(System.out::println);
+
+        courses.stream()
+                .sorted(Comparator.comparing(str->str.length()))
+                .forEach(System.out::println);
+    }
+
+    private static List<Integer> exercisePart5_1(List<Integer> numbers){
+        return numbers.stream()                                 //exercise 10
+                .filter(number->number%2!=0)
+                .collect(Collectors.toList());
+    }
+
+    private static List<Integer> lengthsOfAllCoursesTitle(List<String> courses){
+        return courses.stream()                                 //exercise 11
+                .map(course->course.length())
+                .collect(Collectors.toList());
     }
 }
