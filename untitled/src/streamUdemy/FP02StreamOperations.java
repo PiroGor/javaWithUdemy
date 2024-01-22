@@ -9,16 +9,16 @@ public class FP02StreamOperations {
         List<Integer> numbers=List.of(12,4,23,6,99,56,4);
 
         numbers.stream()
-                .distinct()
-                .sorted()
+                .distinct()  //Stream<T>
+                .sorted()    //Stream<T>
                 .forEach(System.out::println);
 
         List<Integer> squaredNumbers=numbers.stream()
-                .map(number->number*number)
-                .collect(Collectors.toList());
+                .map(number->number*number)  //Strean<R>
+                .collect(Collectors.toList());  //
 
         List<Integer> evenNumbers=numbers.stream()
-                .filter(number->number%2!=0)
+                .filter(number->number%2!=0)  //Stream<T>
                 .collect(Collectors.toList());
 
         int sum=numbers.stream()
@@ -35,5 +35,5 @@ public class FP02StreamOperations {
                 .collect(Collectors.toList());
 
     }
-    
+
 }
