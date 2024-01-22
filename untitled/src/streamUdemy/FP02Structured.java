@@ -24,6 +24,12 @@ public class FP02Structured {
 
         System.out.println(sum);
 
+        numbers.stream()
+                .distinct().forEach(System.out::println);   //don't repeat
+
+        numbers.stream()
+                .sorted().forEach(System.out::println);
+
     }
 
     private static int sum(int aggregate,int nextNumber){
