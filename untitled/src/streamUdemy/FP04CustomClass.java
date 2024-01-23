@@ -171,5 +171,27 @@ public class FP04CustomClass {
                         .max()
         );
 
+        System.out.println(
+        courses.stream()
+                .collect(Collectors.groupingBy(Course::getCategory))
+        );
+
+        System.out.println(
+                courses.stream()
+                        .collect(Collectors.groupingBy(Course::getCategory,Collectors.counting()))
+        );
+
+        System.out.println(
+                courses.stream()
+                        .collect(Collectors.groupingBy(Course::getCategory,
+                                Collectors.maxBy(Comparator.comparing(Course::getReviewScore))))
+        );
+
+        System.out.println(
+                courses.stream()
+                        .collect(Collectors.groupingBy(Course::getCategory,
+                                Collectors.mapping(Course::getName,Collectors.toList())))
+        );
+
     }
 }
