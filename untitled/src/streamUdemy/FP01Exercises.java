@@ -2,6 +2,7 @@ package streamUdemy;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 public class FP01Exercises {
@@ -98,5 +99,18 @@ public class FP01Exercises {
         return courses.stream()                                 //exercise 11
                 .map(course->course.length())
                 .collect(Collectors.toList());
+    }
+
+    private static void exercisePart6(List<Integer> numbers){
+        BinaryOperator<Integer> sumBinaryOperator = Integer::sum;
+
+        BinaryOperator<Integer> sumBinaryOperator2 = new BinaryOperator<Integer>() {
+            @Override
+            public Integer apply(Integer arg0, Integer arg1) {
+                return arg0 + arg1;
+            }
+        };
+        int sum = numbers.stream()
+                .reduce(0, sumBinaryOperator);
     }
 }
