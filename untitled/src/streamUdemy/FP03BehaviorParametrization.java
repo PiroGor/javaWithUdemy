@@ -13,7 +13,7 @@ public class FP03BehaviorParametrization {
         List<Integer> numbers = List.of(12, 7, 33, 4, 8, 3, 1, 15);
 
         filterAndPrint(numbers, x -> x%3==0);
-        
+
         filterAndPrint(numbers, x -> x%2!=0);
 
     }
