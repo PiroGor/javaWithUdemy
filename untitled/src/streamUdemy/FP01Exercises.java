@@ -3,9 +3,11 @@ package streamUdemy;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.BinaryOperator;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class FP01Exercises {
+    @SuppressWarnings("unused")
     public static void main(String[] args){
         List<Integer> numbers=List.of(12,4,23,6,99,56,4);
         printOddNumbersInLIstFunctional(numbers);
@@ -27,8 +29,17 @@ public class FP01Exercises {
 
         List<Integer> lengthsOfCourses=lengthsOfAllCoursesTitle(courses);
         System.out.println(lengthsOfCourses);
+
+        List squaredNumbers= squaredNumbers(numbers, x -> x * x);
+        System.out.println(squaredNumbers);
     }
 
+    private static List<Integer> squaredNumbers(List<Integer> numbers, Function<Integer,Integer> function) {
+
+        return numbers.stream()
+                .map(function)
+                .collect(Collectors.toList());
+    }
 
 
     private static void printOddNumbersInLIstFunctional(List<Integer> numbers){
@@ -101,8 +112,9 @@ public class FP01Exercises {
                 .collect(Collectors.toList());
     }
 
+    @SuppressWarnings("useless")
     private static void exercisePart6(List<Integer> numbers){
-        BinaryOperator<Integer> sumBinaryOperator = Integer::sum;
+        BinaryOperator<Integer> sumBinaryOperator = Integer::sum;   //exercise 12
 
         BinaryOperator<Integer> sumBinaryOperator2 = new BinaryOperator<Integer>() {
             @Override
@@ -113,4 +125,6 @@ public class FP01Exercises {
         int sum = numbers.stream()
                 .reduce(0, sumBinaryOperator);
     }
+
+
 }
